@@ -1,0 +1,12 @@
+### POST request to create a medical record
+POST http://localhost:8080/api/medical-records
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "patientId": "0x03C3CF9B05FB43CE97301CB05EC8C31D",
+  "doctorId": "0x34DC1E6A70A547EABABB451C11E218DF",
+  "visitDate": "2024-11-25",
+  "diagnosis": "Hypertension",
+  "prescription": "Amlodipine 5mg"
+}
