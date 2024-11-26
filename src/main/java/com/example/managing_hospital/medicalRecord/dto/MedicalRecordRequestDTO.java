@@ -11,8 +11,8 @@ import java.util.UUID;
 @Setter
 public class MedicalRecordRequestDTO {
 
-    private UUID patientId;
-    private UUID doctorId;
+    private String doctorEmail;
+    private String patientPhoneNumber;
     private LocalDate visitDate;
     private String diagnosis;
     private String prescription;

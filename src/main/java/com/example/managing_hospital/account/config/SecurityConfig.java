@@ -1,4 +1,3 @@
-/*
 package com.example.managing_hospital.account.config;
 
 import org.springframework.context.annotation.Bean;
@@ -11,14 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
-@Configuration
+@Configuration("accountSecurityConfig")
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/doctor/signup", "nurse/signup", "/doctor/login", "/nurse/login").permitAll()
+                        .requestMatchers("/doctor/signup", "nurse/signup", "/doctor/login", "/nurse/login", "/api/medical-records/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login.disable()
@@ -32,4 +31,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-*/

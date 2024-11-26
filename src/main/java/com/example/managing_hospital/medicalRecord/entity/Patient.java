@@ -18,10 +18,13 @@ public class Patient {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(unique = true, length = 100)
     private String phoneNumber;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 6)
     private LocalDate birthday;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Gender gender;
 }

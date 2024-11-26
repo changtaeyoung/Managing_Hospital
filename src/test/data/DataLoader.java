@@ -2,9 +2,7 @@
 
 package com.example.managing_hospital.data;
 
-import com.example.managing_hospital.medicalRecord.entity.Doctor;
 import com.example.managing_hospital.medicalRecord.entity.Patient;
-import com.example.managing_hospital.medicalRecord.repository.RecordDoctorRepository;
 import com.example.managing_hospital.medicalRecord.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

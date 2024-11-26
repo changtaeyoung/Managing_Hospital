@@ -1,5 +1,6 @@
 package com.example.managing_hospital.medicalRecord.entity;
 
+import com.example.managing_hospital.account.entity.Doctor;
 import jakarta.persistence.*;
 import lombok.*;
 
