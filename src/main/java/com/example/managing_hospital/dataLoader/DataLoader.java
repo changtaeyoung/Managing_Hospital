@@ -19,7 +19,9 @@ public class DataLoader {
     @Bean
     CommandLineRunner loadData(DoctorRepository doctorRepository, PatientRepository patientRepository) {
         return args -> {
-            // 의사 데이터 추가
+            */
+/*//*
+/ 의사 데이터 추가
             Doctor doctor1 = new Doctor();
             doctor1.setName("John Doe");
             doctor1.setEmail("john.doe@example.com");
@@ -32,24 +34,25 @@ public class DataLoader {
             doctor2.setPassword("securepass456");
             doctor2.setSpecialty("Neurology");
 
-            doctorRepository.saveAll(List.of(doctor1, doctor2));
+            doctorRepository.saveAll(List.of(doctor1, doctor2));*//*
+
 
             // 환자 데이터 추가
             Patient patient1 = new Patient();
             patient1.setName("Alice Brown");
-            patient1.setPhoneNumber("123-456-7890");
+            patient1.setPhoneNumber("111-111-1111");
             patient1.setBirthday(LocalDate.of(1990, 1, 15));
             patient1.setGender(Gender.Female);
 
             Patient patient2 = new Patient();
-            patient2.setName("Bob Green");
-            patient2.setPhoneNumber("234-567-8901");
+            patient2.setName("Alice Brown");
+            patient2.setPhoneNumber("222-222-2222");
             patient2.setBirthday(LocalDate.of(1985, 5, 25));
             patient2.setGender(Gender.Male);
 
             Patient patient3 = new Patient();
-            patient3.setName("Charlie Blue");
-            patient3.setPhoneNumber("345-678-9012");
+            patient3.setName("Alice Brown");
+            patient3.setPhoneNumber("333-333-3333");
             patient3.setBirthday(LocalDate.of(2000, 9, 10));
             patient3.setGender(Gender.Male);
 

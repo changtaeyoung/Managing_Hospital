@@ -40,7 +40,7 @@ public class MedicalRecordController {
     }
 
     // 이름으로 환자 리스트 검색
-    @GetMapping("patients")
+    @GetMapping("/search-patients")
     public ResponseEntity<List<PatientDetailDTO>> findPatientsByName(
             @RequestParam String name) {
         List<PatientDetailDTO> patientsDetailDTOs
@@ -49,16 +49,16 @@ public class MedicalRecordController {
     }
 
     // 환자 전화번호로 특정 환자의 진료 기록 리스트 검색
-    @GetMapping("{phoneNumber}")
+    @GetMapping("/search-medicalRecords")
     public ResponseEntity<List<MedicalRecordResponseDTO>> findMedicalRecordsByPhoneNumber(
-            @PathVariable String phoneNumber) {
+            @RequestParam String phoneNumber) {
         List<MedicalRecordResponseDTO> medicalRecordResponseDTOs
                 = medicalRecordService.findByPatientPhoneNumber(phoneNumber);
         return ResponseEntity.ok(medicalRecordResponseDTOs);
     }
 
     // 환자의 전화번호와 방문일자로 특정 진료 기록 검색
-    @GetMapping("/find")
+    @GetMapping("/search-medicalRecord")
     public ResponseEntity<MedicalRecordResponseDTO> findMedicalRecord(
             @RequestBody MedicalRecordRequestDTO request) {
         MedicalRecordResponseDTO medicalRecordResponseDTO

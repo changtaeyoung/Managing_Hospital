@@ -1,0 +1,4 @@
+### 전화번호로 의료 기록 리스트 검색
+GET http://localhost:8080/api/medical-records/search-medicalRecords?phoneNumber=123-456-7890
+Accept: application/json
+
