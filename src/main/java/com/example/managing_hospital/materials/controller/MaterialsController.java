@@ -6,10 +6,7 @@ import com.example.managing_hospital.materials.service.MaterialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,7 +33,7 @@ public class MaterialsController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
     //재고 전체 확인
-    @PostMapping("/findall")
+    @GetMapping("/findall")
     public ResponseEntity<List<Materials>> findAllMaterials() {
         List<Materials> materials = materialsService.findAllMaterials();
         return ResponseEntity.status(HttpStatus.OK).body(materials);
