@@ -1,10 +1,11 @@
 package com.example.managing_hospital.materials.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -19,7 +20,7 @@ public class Materials {
     private String name;
 
     @Column(nullable = false)
-    private Date purchaseDate;
+    private LocalDate purchaseDate;
 
     @Column(nullable = false)
     private int stock;
