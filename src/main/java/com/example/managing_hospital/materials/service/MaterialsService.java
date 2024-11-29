@@ -19,7 +19,7 @@ public class MaterialsService {
     @Transactional
     public Materials addMaterials(MaterialsDTO materialsDTO) {
         Optional<Materials> isExistMaterials =  materialsRepository.findByNameAndPurchaseDate(
-                materialsDTO.getName(), materialsDTO.getPurchase_date());
+                materialsDTO.getName(), materialsDTO.getPurchaseDate());
 
         if (isExistMaterials.isPresent()) {
             Materials materials = isExistMaterials.get();
@@ -30,7 +30,7 @@ public class MaterialsService {
         else {
             Materials materials = new Materials();
             materials.setName(materialsDTO.getName());
-            materials.setPurchaseDate(materialsDTO.getPurchase_date());
+            materials.setPurchaseDate(materialsDTO.getPurchaseDate());
             materials.setStock(materialsDTO.getStock());
             return materialsRepository.save(materials); //이전에 재고가 없었을 경우 추가
         }
@@ -47,21 +47,21 @@ public class MaterialsService {
             return null; //재고 없음
         }
 
-        int remainStock = materialsDTO.getStock();
+        int usingStock = materialsDTO.getStock();
         for(Materials materials : materialsList) {
             int availableStock = materials.getStock();
 
-            if(availableStock >= remainStock) {
-                materials.setStock(availableStock - remainStock);
+            if(availableStock >= usingStock) {
+                materials.setStock(availableStock - usingStock);
                 return materialsRepository.save(materials);
             }
             else {
-                break; //남은 재고량 보다 더 많이 쓸 순 없음
+                return null; //남은 재고량 보다 더 많이 쓸 순 없음
             }
         }
         return null; //재고 다씀
     }
-    
+
     public List<Materials> findAllMaterials() { //재고 전체 검색
         return materialsRepository.findAll();
     }
