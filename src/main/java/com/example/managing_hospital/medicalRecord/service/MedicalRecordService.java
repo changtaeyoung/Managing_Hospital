@@ -47,63 +47,6 @@ public class MedicalRecordService {
 
     }
 
-    /*// 의료 기록 조회(이름을 전달받으면 동명이인 환자 리스트를 반환한다)
-    public List<MedicalRecordResponseDTO> findMedicalRecordsByPatientName(String patientName) {
-
-        List<Patient> patients = patientRepository.findByName(patientName);
-
-        if (patients.isEmpty()) {
-            throw new IllegalArgumentException("환자 정보를 찾을 수 없습니다.");
-        }
-
-        List<MedicalRecordResponseDTO> responseList = new ArrayList<>();
-
-        for (Patient patient : patients) {
-            List<MedicalRecord> medicalRecords = medicalRecordRepository.findByPatientPhoneNumber(patient.getPhoneNumber());
-            for (MedicalRecord medicalRecord : medicalRecords) {
-                MedicalRecordResponseDTO responseDTO = new MedicalRecordResponseDTO(
-                        medicalRecord.getPatient().getName(),
-                        medicalRecord.getPatient().getGender(),
-                        medicalRecord.getPatient().getBirthday(),
-                        medicalRecord.getPatient().getPhoneNumber(),
-                        medicalRecord.getDiagnosis(),
-                        medicalRecord.getPrescription(),
-                        medicalRecord.getVisitDate()
-                );
-                responseList.add(responseDTO);
-            }
-        }
-        return responseList;
-    }*/
-
-    /*
-    // 삭제 예정
-    public List<MedicalRecordResponseDTO> findMedicalRecords(List<MedicalRecordRequestDTO> requestList) {
-
-        List<MedicalRecordResponseDTO> responseList = new ArrayList<>();
-
-        for (MedicalRecordRequestDTO request : requestList) {
-            Patient patient = patientRepository.findByPhoneNumber(request.getPatientPhoneNumber())
-                    .orElseThrow(() -> new IllegalArgumentException("환자 정보가 존재하지 않습니다."));
-
-            MedicalRecord medicalRecord = medicalRecordRepository.findByPatientAndVisitDate(patient, request.getVisitDate())
-                    .orElseThrow(() -> new IllegalArgumentException("기록이 존재하지 않습니다."));
-
-            MedicalRecordResponseDTO responseDTO = new MedicalRecordResponseDTO(
-                    medicalRecord.getPatient().getName(),
-                    medicalRecord.getPatient().getGender(),
-                    medicalRecord.getPatient().getBirthday(),
-                    medicalRecord.getPatient().getPhoneNumber(),
-                    medicalRecord.getDiagnosis(),
-                    medicalRecord.getPrescription(),
-                    medicalRecord.getVisitDate()
-            );
-            responseList.add(responseDTO);
-        }
-
-        return responseList;
-    }*/
-
     // 의료 기록 삭제
     public void deleteMedicalRecord(MedicalRecordRequestDTO request) {
         Patient patient = patientRepository.findByPhoneNumber(request.getPatientPhoneNumber())
@@ -129,6 +72,22 @@ public class MedicalRecordService {
         medicalRecord.setPrescription(request.getPrescription());
 
         medicalRecordRepository.save(medicalRecord);
+    }
+
+    // 모든 환자 리스트를 PatientDetailDTO로 변환하여 반환
+    public List<PatientDetailDTO> getAllPatients() {
+        List<PatientDetailDTO> responseList = new ArrayList<>();
+        List<Patient> patients = patientRepository.findAll();
+        for (Patient patient : patients) {
+            PatientDetailDTO patientDetailDTO = new PatientDetailDTO(
+                    patient.getName(),
+                    patient.getPhoneNumber(),
+                    patient.getBirthday(),
+                    patient.getGender()
+            );
+            responseList.add(patientDetailDTO);
+        }
+        return responseList;
     }
 
     // 환자 이름으로 동명이인 환자 리스트 검색

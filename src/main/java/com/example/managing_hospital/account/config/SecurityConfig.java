@@ -18,11 +18,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/doctor/signup",
-                                "nurse/signup",
+                                "/nurse/signup",
                                 "/doctor/login",
                                 "/nurse/login",
-                                "/api/medical-records/**",
-                                "/hospitalmanager/**").permitAll()
+                                "api/materials/**",
+                                "/medical-records/**",
+                                "/hospitalmanager/**",
+                                "/h2-console/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login.disable()

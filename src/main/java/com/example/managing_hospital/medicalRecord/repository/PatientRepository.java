@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, UUID> {
+
     Optional<Patient> findByPhoneNumber(String phoneNumber);
     List<Patient> findByName(String patientName);
 }

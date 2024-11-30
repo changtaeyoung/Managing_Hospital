@@ -39,6 +39,13 @@ public class MedicalRecordController {
         return ResponseEntity.ok("삭제되었습니다.");
     }
 
+    // 모든 환자 리스트 반환
+    @GetMapping("/allpatients")
+    public ResponseEntity<List<PatientDetailDTO>> getAllPatients() {
+        List<PatientDetailDTO> patientsDetailDTOs = medicalRecordService.getAllPatients();
+        return ResponseEntity.ok(patientsDetailDTOs);
+    }
+
     // 이름으로 환자 리스트 검색
     @GetMapping("/search-patients")
     public ResponseEntity<List<PatientDetailDTO>> findPatientsByName(
