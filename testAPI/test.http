@@ -1,0 +1,12 @@
+### 의료 기록 생성 요청
+POST http://localhost:8080/api/medical-records/update
+Content-Type: application/json
+Accept: application/json
+
+{
+  "doctorEmail": "john.doe@example.com",
+  "patientPhoneNumber": "123-456-7890",
+  "visitDate": "2024-11-30",
+  "diagnosis": "messi",
+  "prescription": "Amlodipine 10mg"
+}

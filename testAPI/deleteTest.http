@@ -1,0 +1,12 @@
+### Delete request to delete a medical record
+DELETE http://localhost:8080/api/medical-records/update
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "doctorEmail": "john.doe@example.com",
+  "patientPhoneNumber": "123-456-7890",
+  "visitDate": "2024-11-26",
+  "diagnosis": "Hypertension",
+  "prescription": "Amlodipine 10mg"
+}
